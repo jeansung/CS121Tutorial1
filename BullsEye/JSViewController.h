@@ -10,4 +10,7 @@
 
 @interface JSViewController : UIViewController
 
+-(IBAction)showAlert;
+
+
 @end
