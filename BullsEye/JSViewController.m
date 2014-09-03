@@ -20,12 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
     
-    // initialize current slider/random target value
-    _currentValue = self.slider.value;
-    _targetValue = 1 + arc4random_uniform(100);
+    [self startNewRound];
+    [self updateLabels];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,6 +46,9 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
     [alertView show];
+    
+    [self startNewRound];
+    [self updateLabels];
 }
 
 /*
@@ -56,6 +57,23 @@
 
 -(IBAction)sliderMoved:(UISlider *)slider {
     _currentValue = lroundf(slider.value);
+}
+
+
+/*
+ method to hanlde each round's set up
+ */
+-(void)startNewRound{
+    _targetValue = 1 + arc4random_uniform(100);
+    
+    // modified code so that slider does not reset to halfway at the
+    // start of each round
+    _currentValue = 1 + arc4random_uniform(100);
+    self.slider.value = _currentValue;
+}
+
+-(void) updateLabels {
+    self.targetLabel.text = [NSString stringWithFormat: @"%d", _targetValue];
 }
 
 @end
