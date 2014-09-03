@@ -11,6 +11,8 @@
 @interface JSViewController : UIViewController
 
 -(IBAction)showAlert;
+-(IBAction)sliderMoved:(UISlider *) slider;
+
 
 
 @end

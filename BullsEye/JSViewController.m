@@ -12,7 +12,9 @@
 
 @end
 
-@implementation JSViewController
+@implementation JSViewController {
+    int _currentValue;
+}
 
 - (void)viewDidLoad
 {
@@ -31,9 +33,23 @@
   method to shows an example pop up alert
  */
 - (IBAction)showAlert {
+    NSString *message = [NSString stringWithFormat:@"The value of the slide is: %d", _currentValue];
+    
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Hello, World" message:@"This is my first app!" delegate:nil cancelButtonTitle:@"Awesome" otherButtonTitles:nil];
+                              initWithTitle:@"Hello, World"
+                              message:message
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
     [alertView show];
+}
+
+/*
+ method to display current value of slider
+ */
+
+-(IBAction)sliderMoved:(UISlider *)slider {
+    _currentValue = lroundf(slider.value);
 }
 
 @end
