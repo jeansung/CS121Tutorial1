@@ -15,6 +15,8 @@
 @implementation JSViewController {
     int _currentValue;
     int _targetValue;
+    int _score;
+    int _round;
 }
 
 - (void)viewDidLoad
@@ -29,7 +31,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -37,7 +38,12 @@
   method to shows an example pop up alert
  */
 - (IBAction)showAlert {
-    NSString *message = [NSString stringWithFormat:@"The value of the slider is: %d\nThe target value is: %d", _currentValue, _targetValue];
+    
+    int difference = abs(_targetValue - _currentValue);
+    int points = 100 - difference;
+    _score += points;
+    
+    NSString *message = [NSString stringWithFormat:@"You scored %d points", points];
     
     UIAlertView *alertView = [[UIAlertView alloc]
                               initWithTitle:@"Hello, World"
@@ -64,6 +70,7 @@
  method to hanlde each round's set up
  */
 -(void)startNewRound{
+    _round +=1;
     _targetValue = 1 + arc4random_uniform(100);
     
     // modified code so that slider does not reset to halfway at the
@@ -74,6 +81,8 @@
 
 -(void) updateLabels {
     self.targetLabel.text = [NSString stringWithFormat: @"%d", _targetValue];
+    self.scoreLabel.text = [NSString stringWithFormat: @"%d", _score];
+    self.roundLabel.text = [NSString stringWithFormat: @"%d", _round];
 }
 
 @end
