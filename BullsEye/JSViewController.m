@@ -22,8 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
     [self startNewRound];
     [self updateLabels];
 }
@@ -72,10 +70,7 @@
 -(void)startNewRound{
     _round +=1;
     _targetValue = 1 + arc4random_uniform(100);
-    
-    // modified code so that slider does not reset to halfway at the
-    // start of each round
-    _currentValue = 1 + arc4random_uniform(100);
+    _currentValue = 50;
     self.slider.value = _currentValue;
 }
 
