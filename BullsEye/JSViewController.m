@@ -134,4 +134,12 @@
     
 }
 
+
+/*
+ method that automatically removes status bar from in game view
+ */
+-(BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 @end
