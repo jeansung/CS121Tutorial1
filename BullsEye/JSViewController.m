@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self startNewRound];
+    [self startNewGame];
     [self updateLabels];
 }
 
@@ -39,20 +39,50 @@
     
     int difference = abs(_targetValue - _currentValue);
     int points = 100 - difference;
+    
+    //components of the alert object
+    NSString *title;
+    
+    
+    if (points == 100) {
+        title = @"perfect";
+        
+        // incentive for getting perfect score
+        // double bonus
+        points += 100;
+    }
+    else if (points > 90) {
+        NSLog(@"wait..");
+        title = @"that's pretty good";
+        
+        
+        // incentive for coming really close 
+        if (difference == 1) {
+            points += 50;
+        }
+    }
+    else if (points > 80) {
+        title = @"decent guess";
+    }
+    else {
+        title = @"you suck";
+    }
+    
     _score += points;
+
+
     
     NSString *message = [NSString stringWithFormat:@"You scored %d points", points];
     
+    // alert object
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Hello, World"
+                              initWithTitle:title
                               message:message
-                              delegate:nil
+                              delegate:self
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
     [alertView show];
     
-    [self startNewRound];
-    [self updateLabels];
 }
 
 /*
@@ -74,10 +104,34 @@
     self.slider.value = _currentValue;
 }
 
+/*
+ method to update the labels after each round to display current values
+ */
 -(void) updateLabels {
     self.targetLabel.text = [NSString stringWithFormat: @"%d", _targetValue];
     self.scoreLabel.text = [NSString stringWithFormat: @"%d", _score];
     self.roundLabel.text = [NSString stringWithFormat: @"%d", _round];
+}
+
+/*
+ method that updates values after alert view has been dismissed
+ */
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self startNewRound];
+    [self updateLabels];
+}
+
+-(IBAction)startOver {
+    [self startNewGame];
+    [self updateLabels];
+}
+
+-(void) startNewGame{
+    _score = 0;
+    _round = 0;
+    [self startNewRound];
+    
 }
 
 @end
