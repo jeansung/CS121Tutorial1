@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F6C71DE19BBCEBB0009153E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C71DD19BBCEBB0009153E /* AboutViewController.m */; };
 		0FF9F6A419B7898700587341 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF9F6A319B7898700587341 /* Foundation.framework */; };
 		0FF9F6A619B7898700587341 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF9F6A519B7898700587341 /* CoreGraphics.framework */; };
 		0FF9F6A819B7898700587341 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF9F6A719B7898700587341 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F6C71DC19BBCEBB0009153E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		0F6C71DD19BBCEBB0009153E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		0FF9F6A019B7898700587341 /* BullsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF9F6A319B7898700587341 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FF9F6A519B7898700587341 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 				0FF9F6B219B7898700587341 /* JSAppDelegate.h */,
 				0FF9F6B319B7898700587341 /* JSAppDelegate.m */,
 				0FF9F6B519B7898700587341 /* Main_iPhone.storyboard */,
+				0F6C71DC19BBCEBB0009153E /* AboutViewController.h */,
+				0F6C71DD19BBCEBB0009153E /* AboutViewController.m */,
 				0FF9F6B819B7898700587341 /* Main_iPad.storyboard */,
 				0FF9F6BB19B7898700587341 /* JSViewController.h */,
 				0FF9F6BC19B7898700587341 /* JSViewController.m */,
@@ -256,6 +261,7 @@
 			files = (
 				0FF9F6B019B7898700587341 /* main.m in Sources */,
 				0FF9F6BD19B7898700587341 /* JSViewController.m in Sources */,
+				0F6C71DE19BBCEBB0009153E /* AboutViewController.m in Sources */,
 				0FF9F6B419B7898700587341 /* JSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
