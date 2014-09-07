@@ -26,7 +26,7 @@
     [self updateLabels];
     
     
-    // slider set up
+    // slider set up / custom target return to center with animation
     
     UIImage *thumbImageNormal = [UIImage imageNamed:@"SliderThumb-Normal"];
     [self.slider setThumbImage:thumbImageNormal forState:UIControlStateNormal];
@@ -59,7 +59,7 @@
     //components of the alert object
     NSString *title;
     
-    
+    // scoring/custom message based on score
     if (points == 100) {
         title = @"perfect";
         
@@ -70,7 +70,6 @@
     else if (points > 90) {
         NSLog(@"wait..");
         title = @"that's pretty good";
-        
         
         // incentive for coming really close 
         if (difference == 1) {
@@ -85,7 +84,6 @@
     }
     
     _score += points;
-
 
     
     NSString *message = [NSString stringWithFormat:@"You scored %d points", points];
@@ -109,17 +107,6 @@
     _currentValue = lroundf(slider.value);
 }
 
-
-/*
- method to hanlde each round's set up
- */
--(void)startNewRound{
-    _round +=1;
-    _targetValue = 1 + arc4random_uniform(100);
-    _currentValue = 50;
-    self.slider.value = _currentValue;
-}
-
 /*
  method to update the labels after each round to display current values
  */
@@ -138,6 +125,20 @@
     [self updateLabels];
 }
 
+
+/*
+ method to hanlde each round's set up
+ */
+-(void)startNewRound{
+    _round +=1;
+    _targetValue = 1 + arc4random_uniform(100);
+    _currentValue = 50;
+    self.slider.value = _currentValue;
+}
+
+/*
+ method that is called when start over button is pressed
+ */
 -(IBAction)startOver {
     
     // animation for starting over 
@@ -150,13 +151,15 @@
     
 }
 
+/*
+ method to start new game
+ */
 -(void) startNewGame{
     _score = 0;
     _round = 0;
     [self startNewRound];
     
 }
-
 
 /*
  method that automatically removes status bar from in game view
